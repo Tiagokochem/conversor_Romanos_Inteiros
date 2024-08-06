@@ -34,10 +34,6 @@ Execute as migrations para criar as tabelas necessárias no banco de dados:
 
 ./vendor/bin/sail artisan migrate
 
-Seed o Banco de Dados
-Execute os seeders para popular o banco de dados com dados de exemplo:
-
-./vendor/bin/sail artisan db:seed
 
 Acesse o Projeto
 Acesse o projeto em http://localhost.

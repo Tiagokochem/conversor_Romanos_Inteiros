@@ -111,13 +111,10 @@ class ConversaoController extends Controller
     private function salvarConversao($ip, $entrada, $saida)
     {
 
-        if(!is_string($saida) || empty($saida)){
-            $saida = '0';
-        }
         ConversaoModel::create([
             'ip' => $ip,
-            'numero_decimal' => $entrada,
-            'numero_romano' => $saida,
+            'numero_romano' => $entrada,
+            'numero_decimal' => $saida,
         ]);
     }
     public function historico()

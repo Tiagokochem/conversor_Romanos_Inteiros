@@ -17,7 +17,7 @@ return new class extends Migration {
                 $table->id();
                 $table->string('ip')->nonullable();
                 $table->string('numero_romano')->nullable();
-                $table->integer('numero_decimal')->nullable();
+                $table->string('numero_decimal')->nullable();
                 $table->timestamps();
             }
         );
