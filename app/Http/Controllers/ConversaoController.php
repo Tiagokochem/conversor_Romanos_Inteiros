@@ -57,9 +57,10 @@ class ConversaoController extends Controller
     public function romanoParaDecimal($romano)
     {
         $romano = strtoupper($romano); // Converte todas as letras para maiúsculas
-        $pattern = '/^(?=[MDCLXVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$/';
-        if (!preg_match($pattern, $romano)) {
-            return redirect()->back()->withInput()->withErrors(['numero' => 'O valor deve ser uma letra romana válida']);
+
+        
+        if (!preg_match('/^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/', $romano)) {
+            return redirect()->route('index');
         }
         $numeros = [
             'I' => 1,
@@ -110,6 +111,10 @@ class ConversaoController extends Controller
 
     private function salvarConversao($ip, $entrada, $saida)
     {
+
+        if (!is_numeric($saida) || !is_numeric($entrada)) {
+            return redirect()->route('index')->with('error', 'Por favor, insira um valor numérico');
+        }
 
         ConversaoModel::create([
             'ip' => $ip,
